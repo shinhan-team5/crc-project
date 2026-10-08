@@ -160,6 +160,20 @@ API·UI 엔지니어
 - 심볼릭 링크는 쓰지 않음 — Windows 개발자 모드·`core.symlinks` 의존을 피하고, 래퍼가 Claude 확장 프론트매터를 맡음
 - Codex는 에이전트 TOML을 드롭인·인라인으로 인식하지 않으므로 `.codex/config.toml` `config_file` 등록이 필수임(2026-09-03 실측)
 
+### 현재 저장소에 있는 원본·래퍼 (2026-10-08 기준)
+`scripts/sync-agents.py`는 아직 없으므로 래퍼는 손으로 맞춰 둠. 원본을 고치면 래퍼의 `name`·`description`도 함께 맞춤.
+
+| 원본 (모든 도구 공통) | Claude Code 래퍼 |
+|------|------|
+| `.agents/skills/problem-definition/SKILL.md` | `.claude/skills/problem-definition/SKILL.md` |
+| `.agents/agents/segment-analyst.md` | `.claude/agents/segment-analyst.md` |
+| `.agents/agents/problem-writer.md` | `.claude/agents/problem-writer.md` |
+| `.agents/agents/problem-reviewer.md` | `.claude/agents/problem-reviewer.md` |
+
+- Claude Code가 아닌 도구(Codex·Cursor 등)는 「문제정의 실습」 요청 시 `.agents/skills/problem-definition/SKILL.md`를  
+  읽고 절차를 따르며, 각 단계의 서브에이전트 지침은 `.agents/agents/{에이전트명}.md` 본문을 사용함  
+- 실습 근거 자료: `references/w01-problem-definition.md`, 템플릿: `problem-definition/template.md`
+
 ## 대화 가이드
 - 언어: 특별한 언급이 없는 경우 한국어를 사용
 - 호칭: 실명 사용하지 않고 닉네임으로 호칭
